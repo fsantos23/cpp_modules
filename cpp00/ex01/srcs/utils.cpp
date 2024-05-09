@@ -1,16 +1,16 @@
-#include "../includes/MyAwesomePhoneBook.hpp"
+#include "Contact.hpp"
 
 int notEmpty(PhoneBook info)
 {
-    if(info.firstName.empty())
+    if(info.getString(0).empty())
         return 0;
-    if(info.lastName.empty())
+    if(info.getString(1).empty())
         return 0;
-    if(info.nickname.empty())
+    if(info.getString(2).empty())
         return 0;
-    if(info.phoneNumber.empty())
+    if(info.getString(3).empty())
         return 0;
-    if(info.darkSecret.empty())
+    if(info.getString(4).empty())
         return 0;
     return 1;
 }

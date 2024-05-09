@@ -1,4 +1,4 @@
-#include "MyAwesomePhoneBook.hpp"
+#include "Contact.hpp"
 
 int check_name(const char *data)
 {
@@ -33,23 +33,16 @@ int check_phone(std::string data)
 PhoneBook Contact::createContact()
 {
     PhoneBook data;
-    PhoneBook null;
 
     std::cout << "\033[2J\033[1;1H";
-    data.firstName = printMessage("What is your name ?", 0);
-    if (!check_name(data.firstName.c_str()))
+    data.setString(0, printMessage("What is your name ?", 0));
+    data.setString(1, printMessage("What is your Surname ?", 0));
+    data.setString(4, printMessage("What is your Nickname ?", 0));
+    data.setString(2, printMessage("What is your phone number ?", 1));
+    if (!check_phone(data.getString(2)))
         return null;
-    data.lastName = printMessage("What is your Surname ?", 0);
-    if (!check_name(data.lastName.c_str()))
-        return null;
-    data.nickname = printMessage("What is your Nickname ?", 0);
-    if (!check_name(data.nickname.c_str()))
-        return null;
-    data.phoneNumber = printMessage("What is your phone number ?", 1);
-    if (!check_phone(data.phoneNumber))
-        return null;
-    data.darkSecret = printMessage("What is your dark secret ?", 0);
-    if (!check_name(data.darkSecret.c_str()))
+    data.setString(3, printMessage("What is your dark secret ?", 0));
+    if (!check_name(data.getString(3).c_str()))
         return null;
     return data;
 }

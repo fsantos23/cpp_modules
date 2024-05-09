@@ -1,5 +1,5 @@
-SRCS		=	./srcs/MyAwesomePhoneBook.cpp \
-				./srcs/print.cpp \
+SRCS		=	./srcs/Contact.cpp \
+				./srcs/PhoneBook.cpp \
 				./srcs/utils.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
@@ -8,7 +8,7 @@ NAME		=	MyAwesomePhoneBook
 
 CPP			=	c++
 
-CPPFLAGS		= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 RM			=	rm -rf
 
