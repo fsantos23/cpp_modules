@@ -8,6 +8,7 @@
 #include <string>
 #include <sstream>
 #include <cctype>
+#include <cstdlib>
 
 class Contact {
     public:
@@ -16,8 +17,8 @@ class Contact {
         PhoneBook createContact(void);
 };
 
-std::string printMessage(std::string print, int h);
-void printContacts(Contact *newContact);
+std::string printMessage(std::string print);
+void printContacts(Contact *Contacts);
 void printInput(void);
 int notEmpty(PhoneBook info);
 int check_name(const char *data);

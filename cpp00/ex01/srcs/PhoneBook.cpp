@@ -31,71 +31,84 @@ std::string PhoneBook::getString(int i) const
     return NULL;
 }
 
-std::string printMessage(std::string print, int h)
+std::string printMessage(std::string print)
 {
     std::string info;
-    std::string null;
-    int i = 0;
 
     std::cout << print << std::endl;
     std::getline(std::cin, info);
-    if (!check_name(info.c_str()) && !h)
-        return null;
-    if(h)
-    {
-        if (!check_phone(info))
-            return null;
-        return info;
-    }
-    if (info.size() >= 10)
-    {
-        while (info[i])
-        {
-            if (i == 9)
-                info[i] = '.';
-            else if (i > 9)
-                info[i] = 0;
-            i++;
-        }
-    }
-    else
-    {
-        int spaces = 9 - info.size();
-        std::string tmp = info;
-        while(spaces >= 0)
-        {
-            info.insert(i, " ");
-            i++;
-            spaces--;
-        }
-        int j = 0;
-        while(tmp[j])
-        {
-            info[i] = tmp[j];
-            i++;
-            j++;
-        }
-    }
     return info;
 }
 
-void printContacts(Contact *newContact)
+void searchTable(std::string index, Contact Contacts[8])
+{
+    int id = std::atoi(index.c_str());
+    std::string tmp;
+    
+    if(index < "0" || index > "7")
+    {
+        std::cout << "index not valid" << std::endl;
+        return ;
+    }
+    if(!notEmpty(Contacts[id].info))
+        std::cout << "index not valid" << std::endl;
+    else
+    {
+        std::cout << "First Name -" << Contacts[id].info.getString(0) << std::endl;
+        std::cout << "Last Name -" << Contacts[id].info.getString(1) << std::endl;
+        std::cout << "Nickname -" << Contacts[id].info.getString(4) << std::endl;
+        std::cout << "Phonenumber -" << Contacts[id].info.getString(2) << std::endl;
+        std::cout << "Dark Secret -" << Contacts[id].info.getString(3) << std::endl;
+    }
+    std::cout << "To exit press enter" << std::endl;
+    std::getline(std::cin, tmp);
+}
+
+std::string limitString(const std::string& str)
+{
+    int spaces = 9 - str.length();  
+    std::string new_str;
+
+    if (str.length() < 9)
+    {
+        int j = 0;
+        while(spaces != -1)
+        {
+            new_str.insert(j, " ");
+            spaces--;
+            j++;
+        }
+        int i = 0;
+        while(str[i])
+        {
+            new_str.insert(j, 1, str[i]);
+            j++;
+            i++;
+        }
+        return new_str;
+    }
+    else
+        return str.substr(0, 9) + ".";
+}
+
+void printContacts(Contact Contacts[8])
 {
     int i = 0;
-    std::string exit;
+    std::string index;
 
     std::cout << "   Index  |First Name| Last Name| Nickname |" << std::endl;
     while(i <= 7)
     {
         std::cout << "-------------------------------------------" << std::endl;
-        if(!notEmpty(newContact[i].info))
+        if(!notEmpty(Contacts[i].info))
             break ;
-        std::cout << "    " << i << "     |" << newContact[i].info.getString(0) << "|" << newContact[i].info.getString(1) << "|" << newContact[i].info.getString(4) << "|" << std::endl;
+        std::cout << "    " << i << "     |" << limitString(Contacts[i].info.getString(0)) << "|" << limitString(Contacts[i].info.getString(1)) << "|" << limitString(Contacts[i].info.getString(4)) << "|" << std::endl;
         i++;
     }
     std::cout << std::endl;
-    std::cout << "If you want to exit the search menu press enter" << std::endl;
-    getline(std::cin, exit);
+    std::cout << "If you want to search the menu press choose an index" << std::endl;
+    getline(std::cin, index);
+    searchTable(index, Contacts);
     std::cout << "\033[2J\033[1;1H";
 }
 
