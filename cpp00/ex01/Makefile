@@ -4,7 +4,7 @@ SRCS		=	./srcs/Contact.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	MyAwesomePhoneBook
+NAME		=	myawesomephonebook
 
 CPP			=	c++
 

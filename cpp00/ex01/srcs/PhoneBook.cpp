@@ -2,6 +2,8 @@
 
 void PhoneBook::setString(int i, std::string str)
 {
+    if (str.empty())
+        return ;
     if (i == 0)
         this->firstName = str;
     if (i == 1)
@@ -32,16 +34,17 @@ std::string PhoneBook::getString(int i) const
 std::string printMessage(std::string print, int h)
 {
     std::string info;
+    std::string null;
     int i = 0;
 
     std::cout << print << std::endl;
     std::getline(std::cin, info);
     if (!check_name(info.c_str()) && !h)
-        return NULL;
+        return null;
     if(h)
     {
         if (!check_phone(info))
-            return NULL;
+            return null;
         return info;
     }
     if (info.size() >= 10)
@@ -90,6 +93,7 @@ void printContacts(Contact *newContact)
         std::cout << "    " << i << "     |" << newContact[i].info.getString(0) << "|" << newContact[i].info.getString(1) << "|" << newContact[i].info.getString(4) << "|" << std::endl;
         i++;
     }
+    std::cout << std::endl;
     std::cout << "If you want to exit the search menu press enter" << std::endl;
     getline(std::cin, exit);
     std::cout << "\033[2J\033[1;1H";

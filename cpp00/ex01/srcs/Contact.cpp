@@ -39,11 +39,7 @@ PhoneBook Contact::createContact()
     data.setString(1, printMessage("What is your Surname ?", 0));
     data.setString(4, printMessage("What is your Nickname ?", 0));
     data.setString(2, printMessage("What is your phone number ?", 1));
-    if (!check_phone(data.getString(2)))
-        return null;
     data.setString(3, printMessage("What is your dark secret ?", 0));
-    if (!check_name(data.getString(3).c_str()))
-        return null;
     return data;
 }
 
@@ -61,7 +57,7 @@ int main()
         if (flag)
         {
             std::cout << "\033[2J\033[1;1H";
-            std::cout << "Not a valid option!" << std::endl;
+            std::cout << "Not a valid input!" << std::endl;
             flag = 0;
             std::getline(std::cin, choise);
             std::cout << "\033[2J\033[1;1H";

@@ -2,7 +2,7 @@ SRCS		=	Megaphone.cpp \
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	megaphone
+NAME		=	Megaphone
 
 CPP			=	c++
 
