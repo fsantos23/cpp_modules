@@ -1,8 +1,8 @@
-SRCS		=	./srcs/main.cpp ./srcs/newZombie.cpp ./srcs/randomChump.cpp ./srcs/Zombie.cpp\
+SRCS		=	./srcs/main.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	brainz
+NAME		=	hiBrain
 
 CPP			=	c++
 

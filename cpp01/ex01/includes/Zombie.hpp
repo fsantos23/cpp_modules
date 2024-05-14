@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include <string>
 #include <sstream>
 #include <cctype>
 
@@ -22,10 +21,9 @@ class Zombie {
 
         std::string getZombie(void) const;
         void setZombie(std::string);
-        void announce (void);
+        void announce (int i);
 };
 
-Zombie *newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

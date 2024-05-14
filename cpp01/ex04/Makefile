@@ -1,12 +1,12 @@
-SRCS		=	./srcs/main.cpp ./srcs/newZombie.cpp ./srcs/randomChump.cpp ./srcs/Zombie.cpp\
+SRCS		=	./srcs/main.cpp ./srcs/File.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	brainz
+NAME		=	replacer
 
 CPP			=	c++
 
-CPPFLAGS		=	 -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+CPPFLAGS		=	 -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
 
 RM			=	rm -rf
 
