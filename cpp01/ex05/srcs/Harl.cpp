@@ -12,16 +12,32 @@ Harl::~Harl(void)
 
 void Harl::complain (std::string level)
 {
-    if (level == "info")
-        this->info();
-    else if (level == "debug")
-        this->debug();
-    else if (level == "warning")
-        this->warning();
-    else if (level == "error")
-        this->error();
-    else
-        std::cout << GREEN <<"*Hoppefully Harl is quiet*" << RESET<< std::endl;
+	int i = 0;
+	std::string array[4] = {"debug", "info", "warning", "error"};
+
+	while(i < 4)
+	{
+		if (array[i] == level)
+			break ;
+		i++;
+	}
+	switch(i)
+	{
+		case 0:
+			debug();
+			break;
+		case 1:
+			info();
+			break;
+		case 2:
+			warning();
+			break;
+		case 3:
+			error();
+			break;
+		default:
+			std::cout << GREEN << "*Hoppefully Harl is quiet*" << RESET << std::endl;
+	}
 }
 
 void Harl::debug(void)

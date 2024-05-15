@@ -1,7 +1,5 @@
 #include "Fixed.hpp"
 
-//falta so a fazer a parte do operator que ainda nao percebi bem, "<<"
-
 int main( void ) {
 	Fixed a;
 	Fixed const b( 10 );

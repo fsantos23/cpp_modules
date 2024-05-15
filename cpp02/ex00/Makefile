@@ -29,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CPP) $(OBJS) $(CPPFLAGS) $(INC) -o $(NAME)
-	@echo $(GREEN) "[Ex00 compiled!]" $(EOC)
+	@echo $(GREEN) "[Ex compiled!]" $(EOC)
 
 clean:
 	@echo $(PURPLE) "[🧹Cleaning...🧹]" $(EOC)
