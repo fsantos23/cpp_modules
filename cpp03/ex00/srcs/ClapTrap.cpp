@@ -13,10 +13,10 @@ ClapTrap::~ClapTrap( void )
 void ClapTrap::attack(const std::string& target)
 {
     if (_hitPoints <= 0 || _energyPoints <= 0)
-        std::cout << _name << " doesn't the necessary force" << std::endl;
+        std::cout << "Claptrap" << _name << " doesn't have the necessary force" << std::endl;
     else
     {
-        std::cout << _name << " attacks and does " << _attackDamage << " to " << target << std::endl;
+        std::cout << "Claptrap" << _name << " attacks and does " << _attackDamage << " to " << target << std::endl;
         _energyPoints--;
     }
 }

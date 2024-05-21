@@ -1,8 +1,8 @@
-SRCS		=	./srcs/main.cpp ./srcs/ClapTrap.cpp ./srcs/ScavTrap.cpp\
+SRCS		=	./srcs/main.cpp ./srcs/ClapTrap.cpp ./srcs/ScavTrap.cpp ./srcs/FragTrap.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	ScavTrap
+NAME		=	FragTrap
 
 CPP			=	c++
 
