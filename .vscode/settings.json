@@ -49,5 +49,9 @@
         "sstream": "cpp",
         "fstream": "cpp"
     },
+    {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
+    },
     "C_Cpp.default.compilerPath": "\\\\wsl.localhost\\Ubuntu\\init"
 }
