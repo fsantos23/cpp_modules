@@ -1,8 +1,9 @@
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "../includes/Dog.hpp"
+#include "../includes/Cat.hpp"
 
 int main()
 {
+	//falta ver aquilo do wrong cat and wrong dog
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
