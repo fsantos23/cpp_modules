@@ -14,8 +14,3 @@ std::string Animal::getType( void ) const
 {
 	return type;
 }
-
-void Animal::makeSound( void ) const
-{
-	std::cout << "Doesn't do any type of noise" << std::endl;
-}

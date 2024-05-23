@@ -4,8 +4,6 @@
 #include "Animal.hpp"
 #include "../includes/Brain.hpp"
 
-class Brain;
-
 class Cat : public Animal {
 	private:
 		::Brain* brain;
