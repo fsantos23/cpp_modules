@@ -1,9 +1,9 @@
 #include "../includes/Dog.hpp"
 #include "../includes/Cat.hpp"
+#include "../includes/WrongCat.hpp"
 
 int main()
 {
-	//falta ver aquilo do wrong cat and wrong dog
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -16,5 +16,14 @@ int main()
 	delete j;
 	delete i;
 	delete meta;
+
+	const WrongAnimal* wrong = new WrongAnimal();
+    const WrongAnimal* h = new WrongCat();
+    std::cout << h->getType() << " " << std::endl;
+    h->makeSound();
+    wrong->makeSound();
+
+	delete h;
+	delete wrong;
     return 0;
 }

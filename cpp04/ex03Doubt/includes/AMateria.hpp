@@ -3,14 +3,14 @@
 
 #include <string>
 #include <iostream>
-#include "ICharacter.hpp"
+#include "MateriaSource.hpp"
 
-class AMateria
-{
+class AMateria {
 	protected:
 		std::string type;
 
 	public:
+		AMateria( void );
 		AMateria(std::string const & type);
 		AMateria(AMateria const & src);
 		AMateria& operator=(AMateria const & rhs);
