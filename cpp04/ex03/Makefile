@@ -1,4 +1,4 @@
-SRCS		=	./srcs/main.cpp ./srcs/Animal.cpp ./srcs/Cat.cpp ./srcs/Dog.cpp ./srcs/Brain.cpp\
+SRCS		=	./srcs/main.cpp ./srcs/AMateria.cpp ./srcs/Character.cpp ./srcs/Cure.cpp ./srcs/Ice.cpp ./srcs/MateriaSource.cpp\
 
 OBJS		= $(SRCS:.cpp=.o)
 

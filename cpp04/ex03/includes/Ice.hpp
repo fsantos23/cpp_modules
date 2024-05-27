@@ -2,6 +2,9 @@
 #define ICE_HPP
 
 #include "AMateria.hpp"
+#include "Character.hpp"
+
+class ICharacter;
 
 class Ice : public AMateria {
 	public:
@@ -11,7 +14,7 @@ class Ice : public AMateria {
 		~Ice( void );
 	
 		void use(ICharacter& target);
-		void use(int idx, ICharacter& target);
+		AMateria* clone() const;
 };
 
 #endif

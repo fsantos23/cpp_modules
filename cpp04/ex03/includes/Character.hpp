@@ -3,8 +3,13 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include <string>
 
 class Character : public ICharacter {
+	private:
+		std::string name;
+		AMateria* inventory[4];
+
 	public:
 		Character ( void );
 		Character (std::string name);

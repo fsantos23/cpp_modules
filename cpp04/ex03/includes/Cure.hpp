@@ -2,6 +2,9 @@
 #define CURE_HPP
 
 #include "AMateria.hpp"
+#include "Character.hpp"
+
+class ICharacter;
 
 class Cure : public AMateria {
 	public:
@@ -11,7 +14,7 @@ class Cure : public AMateria {
 		~Cure( void );
 
 		void use(ICharacter& target);
-		void use(int idx, ICharacter& target);
+		AMateria* clone() const;
 };
 
 #endif
