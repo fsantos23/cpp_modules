@@ -13,6 +13,18 @@ Dog::~Dog( void )
 	delete brain;
 }
 
+Dog::Dog(Dog const &src) : brain(src.brain)
+{
+
+}
+
+Dog& Dog::operator=(Dog const & rhs)
+{
+	this->brain = rhs.brain;
+
+	return *this;
+}
+
 void Dog::makeSound( void ) const
 {
 	std::cout << BLUE << "WOOOOOOOOOFFFFFFFFFF" << RESET << std::endl;

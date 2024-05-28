@@ -6,7 +6,7 @@
 
 class Dog : public Animal {
 	private:
-		::Brain* brain;
+		Brain* brain;
 
 	public:
 		Dog( void );
@@ -14,6 +14,8 @@ class Dog : public Animal {
 		Dog& operator=(Dog const & rhs);
 		~Dog( void );
 
+		void setIdea(std::string idea);
+		std::string getIdea( void ) const;
 		void makeSound( void ) const;
 };
 

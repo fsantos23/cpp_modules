@@ -13,6 +13,18 @@ Cat::~Cat( void )
 	delete brain;
 }
 
+Cat::Cat(Cat const &src) : brain(src.brain)
+{
+
+}
+
+Cat& Cat::operator=(Cat const & rhs)
+{
+	this->brain = rhs.brain;
+
+	return *this;
+}
+
 void Cat::makeSound( void ) const
 {
 	std::cout << GREEN << "MIAUUUUUUUUUUUUUUU" << RESET << std::endl;

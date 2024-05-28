@@ -31,13 +31,15 @@ class Animal {
         std::string type;
     
     public:
-        Animal( void );
+        Animal();
         Animal(Animal const &src);
 		Animal& operator=(Animal const & rhs);
-		virtual ~Animal( void );
+		virtual ~Animal();
 
 		std::string getType( void ) const;
 		virtual void makeSound( void ) const;
+		virtual void setIdea(std::string idea) = 0;
+		virtual std::string getIdea( void ) const = 0;
 };
 
 #endif 

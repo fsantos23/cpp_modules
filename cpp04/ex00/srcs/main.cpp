@@ -19,10 +19,13 @@ int main()
 
 	const WrongAnimal* wrong = new WrongAnimal();
     const WrongAnimal* h = new WrongCat();
+	const WrongCat* right = new WrongCat();
     std::cout << h->getType() << " " << std::endl;
     h->makeSound();
     wrong->makeSound();
+	right->makeSound();
 
+	delete right;
 	delete h;
 	delete wrong;
     return 0;
