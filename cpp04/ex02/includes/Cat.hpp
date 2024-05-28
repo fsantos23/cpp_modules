@@ -4,9 +4,11 @@
 #include "Animal.hpp"
 #include "../includes/Brain.hpp"
 
+class Brain;
+
 class Cat : public Animal {
 	private:
-		::Brain* brain;
+		Brain* brain;
 
 	public:
 		Cat( void );
@@ -14,6 +16,8 @@ class Cat : public Animal {
 		Cat& operator=(Cat const & rhs);
 		~Cat( void );
 
+		void setIdea(std::string idea);
+		std::string getIdea( void ) const;
 		void makeSound( void ) const;
 };
 

@@ -17,8 +17,10 @@ Animal::Animal(Animal const &src) : type(src.type)
 
 Animal& Animal::operator=(Animal const & rhs)
 {
-	this->type = rhs.type;
-
+	if(this->type != rhs.type)
+	{
+		this->type = rhs.type;
+	}
 	return *this;
 }
 

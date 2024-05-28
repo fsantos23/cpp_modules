@@ -3,7 +3,7 @@
 Dog::Dog( void ) : brain(new Brain())
 {
 	std::cout << BLUE << "A dog has born" << RESET << std::endl;
-	type = "Dog"; 
+	type = "Dog";
 	brain->setIdeas("woof woooooof woofffffff wooof wof wof wooooooooffffffff");
 }
 
@@ -13,16 +13,29 @@ Dog::~Dog( void )
 	delete brain;
 }
 
-Dog::Dog(Dog const &src) : brain(src.brain)
+Dog::Dog(Dog const &src) : Animal(src)
 {
-
+    this->brain = new Brain(*src.brain);
 }
 
 Dog& Dog::operator=(Dog const & rhs)
 {
-	this->brain = rhs.brain;
+    if (this != &rhs)
+	{
+        delete this->brain;
+        this->brain = new Brain(*rhs.brain);
+    }
+    return *this;
+}
 
-	return *this;
+void Dog::setIdea(std::string idea)
+{
+	brain->setIdeas(idea);
+}
+
+std::string Dog::getIdea( void ) const
+{
+	return this->brain->getIdeas();
 }
 
 void Dog::makeSound( void ) const

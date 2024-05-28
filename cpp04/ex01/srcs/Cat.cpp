@@ -13,17 +13,19 @@ Cat::~Cat( void )
 	delete brain;
 }
 
-Cat::Cat(Cat const &src) : brain(src.brain)
+Cat::Cat(Cat const &src) : Animal(src), brain(new Brain(*src.brain))
 {
 
 }
 
 Cat& Cat::operator=(Cat const & rhs)
 {
-	delete this->brain;
-	this->brain = rhs.brain;
-
-	return *this;
+    if (this->brain != rhs.brain)
+	{
+        delete this->brain;
+        this->brain = new Brain(*rhs.brain);
+    }
+    return *this;
 }
 
 void Cat::setIdea(std::string idea)

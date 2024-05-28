@@ -12,28 +12,33 @@ Brain::~Brain( void )
 
 Brain::Brain(Brain const &src)
 {
-	this->ideas[100] = src.ideas[100];
+    for (int i = 0; i < 100; ++i)
+        this->ideas[i] = src.ideas[i];
 }
 
 Brain& Brain::operator=(Brain const & rhs)
 {
-	this->ideas[100] = rhs.ideas[100];
-
-	return *this;
+    if (this != &rhs)
+	{
+        for (int i = 0; i < 100; ++i)
+            this->ideas[i] = rhs.ideas[i];
+    }
+    return *this;
 }
 
 void Brain::setIdeas(std::string idea)
 {
-	for(int j = 0; j < (int)idea.length(); j++)
-		this->ideas[j] = idea[j];
+    for (int i = 0;i < (int)idea.length(); ++i)
+        this->ideas[i] = idea;
 }
 
-std::string Brain::getIdeas( void ) const
+std::string Brain::getIdeas(void) const
 {
-	std::string *idea = NULL;
+    std::string idea;
 
-	for(int i = 0; i < (int)ideas->length(); i++)
-		idea[i] = ideas[i];
-
-	return *idea;
+	if (!this->ideas->empty())
+	{
+		idea += this->ideas[0];
+	}
+    return idea;
 }

@@ -13,17 +13,19 @@ Dog::~Dog( void )
 	delete brain;
 }
 
-Dog::Dog(Dog const &src) : brain(src.brain)
+Dog::Dog(Dog const &src) : Animal(src)
 {
-
+    this->brain = new Brain(*src.brain);
 }
 
 Dog& Dog::operator=(Dog const & rhs)
 {
-	delete this->brain;
-	this->brain = new Brain(*rhs.brain);
-
-	return *this;
+    if (this != &rhs)
+	{
+        delete this->brain;
+        this->brain = new Brain(*rhs.brain);
+    }
+    return *this;
 }
 
 void Dog::setIdea(std::string idea)
