@@ -40,6 +40,18 @@ int main()
 	//doesnt have the materia of ice on him anymore
 	me->use(0, *bob);
 	
+	Character *antonio = new Character("antonio");
+	Character *cpy = new Character("cpy");
+
+	tmp = other->createMateria("cure");
+	antonio->equip(tmp);
+
+	*cpy = *antonio;
+
+	std::cout << RED << "Should print the materia that me has in the slot 1" << RESET << std::endl;
+
+	cpy->use(0, *antonio);
+
 	delete francisco;
 	delete other;
 	delete bob;

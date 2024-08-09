@@ -38,8 +38,6 @@ class Animal {
 
 		std::string getType( void ) const;
 		virtual void makeSound( void ) const = 0;
-		virtual void setIdea(std::string idea) = 0;
-		virtual std::string getIdea( void ) const = 0;
 };
 
 #endif 

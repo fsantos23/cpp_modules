@@ -4,11 +4,13 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
+#include <fstream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	private:
 		const std::string name;
 		bool sign;
@@ -16,17 +18,19 @@ class Form {
 		const int grade_to_sign;
 
 	public:
-		Form(void);
-		Form(const std::string name, const int grade_to_sign, const int grade_to_exec);
-		Form(Form const & src);
-		Form& operator=(Form const & rhs);
-		~Form(void);
+		AForm(void);
+		AForm(const std::string name, const int grade_to_sign, const int grade_to_exec);
+		AForm(AForm const & src);
+		AForm& operator=(AForm const & rhs);
+		virtual ~AForm(void);
 
 		bool getSign (void) const;
 		int getGradeSign (void) const;
 		int getGradeExec (void) const;
 		const std::string getName (void) const;
 		void beSigned(Bureaucrat *b);
+
+		virtual void execute(Bureaucrat const & executor) = 0;
 
 		class GradeTooLowException
 		{
@@ -40,6 +44,6 @@ class Form {
 		};
 };
 
-std::ostream &operator<<(std::ostream& os, const Form &f);
+std::ostream &operator<<(std::ostream& os, const AForm &f);
 
 #endif

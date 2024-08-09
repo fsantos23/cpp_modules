@@ -60,7 +60,7 @@ std::ostream &operator<<(std::ostream& os, const Bureaucrat &b)
 	return os;
 }
 
-void Bureaucrat::signForm (Form *f)
+void Bureaucrat::signForm (AForm *f)
 {
 	if(f->getSign())
 		std::cout << this->name << " signed " << f->getName() << std::endl;
