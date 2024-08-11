@@ -67,3 +67,11 @@ void Bureaucrat::signForm (AForm *f)
 	if(!f->getSign())
 		std::cout << this->name << " couldn't sign " << f->getName() << " because grade neccessary is " << f->getGradeSign() << std::endl;
 }
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if(form.execute(*this) == 1)
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	else
+		std::cerr <<  this->getName() << " couldn't executed " << form.getName() << std::endl;
+}

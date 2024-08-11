@@ -1,8 +1,8 @@
-SRCS		=	./srcs/main.cpp ./srcs/Bureaucrat.cpp ./srcs/Form.cpp
+SRCS		=	./srcs/main.cpp ./srcs/Bureaucrat.cpp ./srcs/AForm.cpp ./srcs/PresidentialPardonForm.cpp ./srcs/RobotomyRequestForm.cpp ./srcs/ShrubberyCreationForm.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	Abstract
+NAME		=	Bureaucrat
 
 CPP			=	c++
 

@@ -12,7 +12,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm (const std::string target);
 		~RobotomyRequestForm (void);
 		
-		void execute(Bureaucrat const & executor);
+		int execute(Bureaucrat const & executor) const;
 };
 
 #endif

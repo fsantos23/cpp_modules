@@ -8,14 +8,19 @@ AForm::AForm (const std::string name, const int grade_to_sign, const int grade_t
 		throw GradeTooLowException();
 }
 
+AForm::~AForm (void)
+{
+
+}
+
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return "Grade to high";
+	return "Grade too high";
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return "Grade too high";
+	return "Grade too low";
 }
 
 bool AForm::getSign (void) const
