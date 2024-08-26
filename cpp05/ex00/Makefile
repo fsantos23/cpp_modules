@@ -2,7 +2,7 @@ SRCS		=	./srcs/main.cpp ./srcs/Bureaucrat.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	Abstract
+NAME		=	Bureaucrat
 
 CPP			=	c++
 
