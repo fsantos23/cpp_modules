@@ -71,12 +71,14 @@ void toInt(const std::string literal)
     char* end;
     long num = std::strtol(literal.c_str(), &end, 10);
 
-    if (*end != '\0' && *end != 'f') 
+	//ver conversao de 1. ou 1.2 para 1 e verificar se passa para 2 se 1.5 <
+	//e fazer conversasao de 'a' para int 96
+    if (*end != '\0'  && *end != 'f' && (*end != '.'))
 	{
         std::cout << "Not possible" << std::endl;
         return;
     }
-    if (num < INT_MIN || num > INT_MAX) 
+    if (num < INT_MIN || num > INT_MAX)
 	{
         std::cout << "Not possible" << std::endl;
         return;

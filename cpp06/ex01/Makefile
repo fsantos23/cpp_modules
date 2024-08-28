@@ -1,12 +1,12 @@
-SRCS		=	./srcs/main.cpp ./srcs/ScalarMethod.cpp
+SRCS		=	./srcs/main.cpp ./srcs/Serializer.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	Cast
+NAME		=	Serializer
 
 CPP			=	c++
 
-CPPFLAGS		=	-Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+CPPFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
 
 RM			=	rm -rf
 
