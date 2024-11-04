@@ -8,6 +8,7 @@
 #include <limits>
 #include <sstream>
 #include <climits>
+#include <cmath>
 
 class ScalarMethod {
 	public:

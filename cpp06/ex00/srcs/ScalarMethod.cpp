@@ -68,9 +68,14 @@ bool isInteger(const std::string& str)
 void toInt(const std::string literal)
 {
 	std::cout << "int: ";
-    char* end;
-    long num = std::strtol(literal.c_str(), &end, 10);
+	if (literal.length() == 1 && !isdigit(literal[0])) {
+        // Convert single character to ASCII value
+        std::cout << static_cast<int>(literal[0]) << std::endl;
+        return;
+    }
 
+    char* end;
+    double num = std::strtod(literal.c_str(), &end);
 	//ver conversao de 1. ou 1.2 para 1 e verificar se passa para 2 se 1.5 <
 	//e fazer conversasao de 'a' para int 96
     if (*end != '\0'  && *end != 'f' && (*end != '.'))
@@ -83,7 +88,12 @@ void toInt(const std::string literal)
         std::cout << "Not possible" << std::endl;
         return;
     }
-    std::cout << static_cast<int>(num) << std::endl;
+	
+	double decimal_part = num - static_cast<int>(num);
+	if (decimal_part >= 0.5)
+		num += (num > 0) ? 0.5 : -0.5;
+
+	std::cout << static_cast<int>(num) << std::endl;
 }
 
 void toDouble(const std::string literal)
@@ -109,7 +119,7 @@ void toFloat(const std::string literal)
     char *end;
     double num = std::strtod(literal.c_str(), &end);
 
-    if (*end != '\0') 
+    if (*end != '\0')
 	{
         if (*end == 'f' && *(end + 1) == '\0')
             std::cout << std::fixed << std::setprecision(1) << num << 'f' << std::endl;

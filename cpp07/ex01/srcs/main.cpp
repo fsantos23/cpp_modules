@@ -11,20 +11,20 @@ void printElement(const T& x) {
 
 int main()
 {
-    int intArray[] = {1, 2, 3, 4, 5};
-    size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
-    
-    std::cout << "Printing integers:" << std::endl;
-    iter(intArray, intArrayLength, printInt);
+	int intArray[] = {1, 2, 3, 4, 5};
+	size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
 
-    std::cout << "\nPrinting integers using template function:" << std::endl;
-    iter(intArray, intArrayLength, printElement<int>);
+	std::cout << "Printing integers:" << std::endl;
+	iter(intArray, intArrayLength, printInt);
 
-    std::string strArray[] = {"Hello", "World", "C++", "Templates"};
-    size_t strArrayLength = sizeof(strArray) / sizeof(strArray[0]);
+	std::cout << std::endl << "Printing integers using template function:" << std::endl;
+	iter(intArray, intArrayLength, printElement<int>);
 
-    std::cout << "\nPrinting strings:" << std::endl;
-    iter(strArray, strArrayLength, printElement<std::string>);
+	std::string strArray[] = {"Hello", "World", "C++", "Templates"};
+	size_t strArrayLength = sizeof(strArray) / sizeof(strArray[0]);
 
-    return 0;
+	std::cout << std::endl << "Printing strings:" << std::endl;
+	iter(strArray, strArrayLength, printElement<std::string>);
+
+	return 0;
 }

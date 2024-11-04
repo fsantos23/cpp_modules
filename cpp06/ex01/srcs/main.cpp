@@ -22,9 +22,9 @@ int is_alpha(std::string word)
 
 int main (int ac, char **av)
 {
-	if(ac != 4 && is_alpha(av[1]) && is_number(av[2]))
+	if(ac != 3 || is_alpha(av[1]) || is_number(av[2]))
 	{
-		std::cout << "Wrong number of arguments" << std::endl;
+		std::cout << "usage: ./Serializer <name> <id>" << std::endl;
 		return 1;
 	}
 	Data* d = new Data;
