@@ -8,15 +8,15 @@ int main() {
 
     try {
         std::cout << "Looking for 3 in vector: ";
-        std::vector<int>::iterator it = easyfind(vec, 3);  // Correct type
-        std::cout << "Found: " << *it << std::endl;
+        int it = easyfind(vec, 3);
+        std::cout << "Found: " << it << std::endl;
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
     }
 
     try {
         std::cout << "Looking for 10 in vector: ";
-        easyfind(vec, 10);  // This will throw
+        easyfind(vec, 10); 
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
     }
@@ -26,7 +26,7 @@ int main() {
 
     try {
         std::cout << "Looking for 20 in list: ";
-        std::list<int>::iterator it = easyfind(lst, 20);  // Correct type
+        std::list<int>::iterator it = easyfind(lst, 20);
         std::cout << "Found: " << *it << std::endl;
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;

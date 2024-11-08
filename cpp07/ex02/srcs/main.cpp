@@ -43,6 +43,22 @@ int main(int, char**)
         std::cerr << e.what() << '\n';
     }
 
+	Array<int> emptyArray(0);  // Initialize an array of size 0
+    try
+    {
+        int testVal = emptyArray[0]; // Should throw exception
+		std::cout << testVal << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Error (empty array): " << e.what() << '\n';
+    }
+
+    // Test 5: Checking array size
+    Array<int> smallArray(5);
+    std::cout << "Array size: " << smallArray.size() << std::endl;  // Should output 5
+
+    // Test 7: Ensure that the array is filled with random values
     for (int i = 0; i < MAX_VAL; i++)
     {
         numbers[i] = rand();
