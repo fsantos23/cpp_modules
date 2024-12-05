@@ -36,5 +36,4 @@ T max (T arg1, T arg2)
 	return arg2;
 }
 
-
 #endif

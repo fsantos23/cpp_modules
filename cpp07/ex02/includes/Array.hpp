@@ -5,9 +5,6 @@
 #include <cstdlib>
 
 template<typename T>
-
-//exercicio não acabado preciso de perguntar
-
 class Array {
 	private:
 		T* array;
