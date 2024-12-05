@@ -6,7 +6,7 @@
 
 template<typename T>
 
-//exercicio não acabaddo preciso de perguntar
+//exercicio não acabado preciso de perguntar
 
 class Array {
 	private:

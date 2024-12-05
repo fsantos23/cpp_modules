@@ -1,8 +1,22 @@
 #include "../includes/Array.hpp"
 
 #define MAX_VAL 750
+
+void test_array()
+{
+    Array<char> array(5);
+
+    for (int i = 0; i < 5; i++)
+        array[i] = i + 65;
+    for (int i = 0; i < 5; i++)
+        std::cout << array[i] << " ";
+    std::cout << std::endl;
+}
+
+
 int main(int, char**)
 {
+    test_array();
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));

@@ -2,7 +2,7 @@ SRCS		=	./srcs/main.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	Iter
+NAME		=	Array
 
 CPP			=	c++
 

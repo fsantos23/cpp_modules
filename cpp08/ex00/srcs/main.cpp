@@ -1,7 +1,7 @@
 #include "easyfind.hpp"
 
-int main() {
-    // Manually populate the vector (C++98-compatible)
+int main()
+{
     std::vector<int> vec;
     vec.push_back(1);
     vec.push_back(2);
@@ -17,7 +17,6 @@ int main() {
         std::cerr << "Value not found in vector!" << std::endl;
     }
 
-    // Manually populate the list (C++98-compatible)
     std::list<int> lst;
     lst.push_back(10);
     lst.push_back(20);

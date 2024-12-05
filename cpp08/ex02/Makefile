@@ -1,8 +1,8 @@
-SRCS		=	./srcs/main.cpp ./srcs/Span.cpp
+SRCS		=	./srcs/main.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	Span
+NAME		=	Stack
 
 CPP			=	c++
 
