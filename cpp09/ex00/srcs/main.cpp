@@ -8,6 +8,5 @@ int main(int ac, char **av)
 		std::cerr << "Usage: ./replace filename" << std::endl;
 		return 1;
 	}
-	std::string filename = av[1];
-	std::ifstream
+	BitcoinExchange exchange("../data.csv", av[1]);
 }
