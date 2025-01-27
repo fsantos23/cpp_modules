@@ -1,8 +1,8 @@
-SRCS		=	./srcs/main.cpp
+SRCS		=	./srcs/main.cpp ./srcs/PmergeMe.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
-NAME		=	Iter
+NAME		=	PmergeMe
 
 CPP			=	c++
 

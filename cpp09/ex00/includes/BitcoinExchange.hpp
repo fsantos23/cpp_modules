@@ -6,25 +6,26 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
+#include <ctime>
+#include <iomanip>
+
 
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, float> _db;
-		std::map<std::string, float> _input;
+		std::map<std::time_t, float> _db;
+		std::map<std::time_t, float> _input;
 		std::map<std::string, std::string> _date;
 
 	public:
-		BitcoinExchange(std::string filename, std::string input_file);
+		BitcoinExchange(const std::string& filename, const std::string& input_file);
 		BitcoinExchange(const BitcoinExchange &other);
 		BitcoinExchange &operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
-		void addValues(std::string filename, std::string name);
+		void addValues(const std::string& filename, const std::string& name);
 		void sendValues();
-		int checkDate(std::string date);
-		int checkNumber();
-		void printValue(std::string date, float value);
+		std::string formatTime(std::time_t time);
 };
 
 #endif

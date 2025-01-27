@@ -1,87 +1,93 @@
 #include "../includes/BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::string filename, std::string input_file)
+BitcoinExchange::BitcoinExchange(const std::string& filename, const std::string& input_file)
 {
 	addValues(filename, "db");
 	addValues(input_file, "input");
 }
 
-void BitcoinExchange::addValues(std::string filename, std::string name)
+void BitcoinExchange::addValues(const std::string& filename, const std::string& name)
 {
 	std::ifstream file(filename.c_str());
 	std::string line;
-	std::string date;
+	std::string dateStr;
 	float value;
 
 	if (!file.is_open())
 	{
+		std::cout << filename << std::endl;
 		std::cerr << "Error: could not open file" << std::endl;
 		exit(1);
 	}
+	// Skip header
+	std::getline(file, line);
+
 	while (std::getline(file, line))
 	{
 		std::stringstream ss(line);
-		std::getline(ss, date, ',');
+		std::getline(ss, dateStr, ',');
 		ss >> value;
-		if(name == "db")
-			_db[date] = value;
-		else if(name == "input")
-			_input[date] = value;
+
+		// Validate date
+		struct tm tm = {};
+		char* ret = strptime(dateStr.c_str(), "%Y-%m-%d", &tm);
+		if (ret == NULL || mktime(&tm) == -1)
+		{
+			std::cerr << "Invalid date format: " << dateStr << std::endl;
+			continue;
+		}
+
+		if (name == "input" && (value < 0 || value > 1000))
+        {
+            std::cerr << "Error: Input invalid: " << value << std::endl;
+            continue;
+        }
+
+		// Normalize time to midnight
+		tm.tm_hour = 0;
+		tm.tm_min = 0;
+		tm.tm_sec = 0;
+		
+		// Convert to time_t for consistent comparison
+		std::time_t time = mktime(&tm);
+		if (name == "db")
+			_db[time] = value;
+		else if (name == "input")
+			_input[time] = value;
 	}
 }
 
 void BitcoinExchange::sendValues()
 {
-	std::map<std::string, float>::iterator it;
-
-	for (it = _input.begin(); it != _input.end(); it++)
+	std::map<std::time_t, float>::const_iterator inputIt;
+	for (inputIt = _input.begin(); inputIt != _input.end(); inputIt++)
 	{
-		if(checkDate(it->first))
-			std::cout << "Wrong date input: " << it->first << std::endl;
-		else
-			printValue(it->first, it->second);
-	}
-}
+		std::map<std::time_t, float>::const_iterator dbIt = _db.lower_bound(inputIt->first);
 
-int BitcoinExchange::checkDate(std::string date)
-{
-	std::string year = date.substr(0, 4);
-	_date["year"] = year;
-	std::string month = date.substr(5, 2);
-	_date["month"] = month;
-	std::string day = date.substr(8, 2);
-	_date["day"] = day;
-	if(checkNumber())
-		return 1;
-	_date.clear();
-	return 0;
-}
-
-int BitcoinExchange::checkNumber()
-{
-	std::map<std::string, std::string>::iterator it;
-	for(it = _date.begin(); it != _date.end(); it++)
-	{
-		std::string date = it->second;
-		for (int i = 0; i < date.length(); i++)
+		if (dbIt == _db.end())
 		{
-			if (!isdigit(date[i]))
-				return 1;
+			if (!_db.empty())
+				dbIt = --_db.end();
+			else
+			{
+				std::cout << "Error: No data available" << std::endl;
+				continue;
+			}
 		}
-		if(it->first == "month" && (date <= "00" || date >= "13")) 
-			return 1;
-		if(it->first == "day" && ((date <= "00" || date >= "32") || (_date["month"] == "02" && (date <= "00" || date >= "29"))))
-			return 1;
-		if(it->first == "day" && ((_date["month"] == "02" || _date["month"] == "04" || _date["month"] == "06" || _date["month"] == "09" || _date["month"] == "11") && (date <= "00" || date >= "31")))
-			return 1;
-		if(it->first == "year" && date <= "0000")
-			return 1;
-		_date.find("month")
+		float dbValue = dbIt->second;
+		std::cout << formatTime(inputIt->first) << " => "
+					<< inputIt->second << " = " << (inputIt->second * dbValue) << std::endl;
 	}
-	return 0;
 }
 
+std::string BitcoinExchange::formatTime(std::time_t time)
+{
+	struct tm* tm = localtime(&time);
+	char buffer[11];
+	strftime(buffer, sizeof(buffer), "%Y-%m-%d", tm);
+	return std::string(buffer);
+}
 
-BitcoinExchange::~BitcoinExchange()
+BitcoinExchange::~BitcoinExchange() 
 {
 }
