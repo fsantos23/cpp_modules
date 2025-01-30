@@ -28,12 +28,21 @@ void BitcoinExchange::addValues(const std::string& filename, const std::string& 
 		std::getline(ss, dateStr, ',');
 		ss >> value;
 
-		// Validate date
 		struct tm tm = {};
 		char* ret = strptime(dateStr.c_str(), "%Y-%m-%d", &tm);
+		int original_day = tm.tm_mday;
+		int original_month = tm.tm_mon;
+		int original_year = tm.tm_year;
+		
 		if (ret == NULL || mktime(&tm) == -1)
 		{
-			std::cerr << "Invalid date format: " << dateStr << std::endl;
+			std::cerr << "Invalid date: " << dateStr << std::endl;
+			continue;
+		}
+
+		if (name == "input" && (tm.tm_mday != original_day || tm.tm_mon != original_month || tm.tm_year != original_year))
+		{
+			std::cerr << "Invalid date: " << dateStr << std::endl;
 			continue;
 		}
 
@@ -43,12 +52,10 @@ void BitcoinExchange::addValues(const std::string& filename, const std::string& 
             continue;
         }
 
-		// Normalize time to midnight
 		tm.tm_hour = 0;
 		tm.tm_min = 0;
 		tm.tm_sec = 0;
-		
-		// Convert to time_t for consistent comparison
+
 		std::time_t time = mktime(&tm);
 		if (name == "db")
 			_db[time] = value;

@@ -17,7 +17,8 @@ class PmergeMe {
 		~PmergeMe() {};
 		void fordJohnsonSort()
 		{
-			if (numbers.size() <= 1) return;
+			if (numbers.size() <= 1)
+				return;
 			Container mins, maxs;
 			for (typename Container::size_type i = 0; i + 1 < numbers.size(); i += 2)
 			{
