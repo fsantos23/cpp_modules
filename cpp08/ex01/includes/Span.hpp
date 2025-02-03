@@ -20,6 +20,8 @@ class Span
 
 	public:
 		Span(unsigned int N);
+		Span(const Span &span);
+		Span &operator=(const Span &span);
 		~Span();
 
 		void addNumber(int value);

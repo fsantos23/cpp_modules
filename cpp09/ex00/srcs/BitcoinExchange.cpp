@@ -25,7 +25,11 @@ void BitcoinExchange::addValues(const std::string& filename, const std::string& 
 	while (std::getline(file, line))
 	{
 		std::stringstream ss(line);
-		std::getline(ss, dateStr, ',');
+		if(name == "db")
+			std::getline(ss, dateStr, ',');
+		else
+			std::getline(ss, dateStr, '|');
+			
 		ss >> value;
 
 		struct tm tm = {};

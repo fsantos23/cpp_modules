@@ -10,11 +10,15 @@ template <typename T, typename Container = std::deque<T > >
 class MutantStack : public std::stack<T, Container>
 {
 	public:
-		using typename std::stack<T, Container>::container_type;
-    	using typename std::stack<T, Container>::value_type;
-    	using typename std::stack<T, Container>::size_type;
-
 		MutantStack() : std::stack<T, Container>() {};
+		MutantStack(const MutantStack &other) : std::stack<T, Container>(other) {};
+		MutantStack &operator=(const MutantStack &other)
+		{
+			if(this == &other)
+				return *this;
+			this->c = other.c;
+			return *this;
+		}
 		~MutantStack() {};
 
 		typedef typename Container::iterator iterator;
