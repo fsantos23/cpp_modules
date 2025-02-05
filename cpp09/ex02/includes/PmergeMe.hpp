@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <sstream>
 
+#define INT_MAX 2147483647
+
 template <typename Container>
 class PmergeMe {
 	private:

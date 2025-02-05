@@ -14,7 +14,8 @@ int RPN::isNumber(std::string str)
 		return false;
 
 	size_t start = (str[0] == '-' && str[1]) ? 1 : 0;
-
+	if(start == 1)
+		throw std::runtime_error("Not a positive number: " + str);
 	for (size_t i = start; i < str.length(); ++i)
 	{
 		if (!isdigit(str[i]))
@@ -64,7 +65,7 @@ void RPN::calculate(std::string str)
 		else
 			operate(token);
 	}
-	if(isNumber(token))
+	if(isNumber(token) || _stack.size() != 1)
 		throw std::runtime_error("Not enough operators");
 	std::cout << "Result: " << _stack.top() << std::endl;
 }

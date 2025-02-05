@@ -1,4 +1,3 @@
-// use std::stack for the reverse polish notation
 #include "../includes/RPN.hpp"
 
 int main(int ac, char **av)
@@ -16,7 +15,7 @@ int main(int ac, char **av)
 	catch(const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
-		return 1;
+		return 0;
 	}
 	return 0;
 }

@@ -26,6 +26,24 @@ int isNumber(std::string str)
 	return 1;
 }
 
+int is_sorted(std::deque<int> deq)
+{
+	if (deq.empty())
+		return 1;
+
+    std::deque<int>::const_iterator it = deq.begin();
+    std::deque<int>::const_iterator next = it;
+    ++next;
+
+    while (next != deq.end())
+	{
+        if (*next < *it)
+            return 0;
+        ++it;
+        ++next;
+    }
+    return 1;
+}
 
 int main(int ac, char **av)
 {
@@ -41,7 +59,9 @@ int main(int ac, char **av)
 		for (int i = 1; i < ac; ++i)
 		{
 			std::cout << av[i] << " ";
-			if(isNumber(av[i]) && checkDup(std::atoi(av[i]), deq))
+			char *end;
+			long num = std::strtol(av[i], &end, 10);
+			if(isNumber(av[i]) && checkDup(std::atoi(av[i]), deq) && num <= INT_MAX)
 				deq.push_back(std::atoi(av[i]));
 			else
 			{
@@ -51,6 +71,8 @@ int main(int ac, char **av)
 			}
 		}
 		std::cout << std::endl;
+		if (is_sorted(deq))
+			throw std::runtime_error("Already sorted");	
 	
 		PmergeMe<std::deque<int > > d(deq);
 		clock_t startDeque = clock();
